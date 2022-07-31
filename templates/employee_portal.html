@@ -1,0 +1,25 @@
+{% extends "base_user.html" %}
+{% block title %}Portal | HR DT{% endblock %}
+{% block body %}
+    <div class="container">
+        <h5 style="margin-top: 20px;">Welcome: {{user}}</h5>
+        <div class="row" style="margin-top: 20px">
+            
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <h5 style="background-color: antiquewhite;padding: 10px;font-size: 14px;font-weight: bold;">::My Information::</h5>
+                <div class="table-responsive" style="font-size: 14px;">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
+                        <thead>
+                        {% for details,value in myinfo.items() %}
+                        <tr>
+                            <th style="font-size: 16px;">{{ details }}</th>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

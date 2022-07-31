@@ -1,0 +1,40 @@
+
+
+{% extends "base.html" %}
+{% block title %}Login | HR DT{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="center">
+    <h1 id="loginheader">Login to your account</h1>
+    <form action="/login" method="POST" id="loginForm">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                <input type="email" class="form-control form-control-md" id="email" placeholder="Email" name="email" required>
+            </div>
+          </div>
+          <br/>
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control form-control-md" id="pwd" placeholder="Password" name="pswd" required>
+                <span toggle="#pwd" class="fa fa-fw fa-eye toggle-password" onclick="togglepwd()" id="showpswd"></span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success btn-block btn-md" style="font-weight:bold"><i class="fa fa-user"></i> Login</button>
+          <a href="/forgetpswd" class="btn btn-secondary btn-block btn-md"><i class="fa fa-exclamation-triangle"></i> Forgot Password</a> <br/>
+          <!-- <span><a href="/register" class="btn btn-success btn-sm" >Create New Account</a></span> -->
+    </form>
+    <span>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="alert alert-info alert-dismissible" style="text-align: center;"> 
+                        <button type="button" class="close" data-dismiss="alert">&times;</button> {{msg}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </span>
+  </div>
+</div>
+{% endblock %}

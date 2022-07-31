@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% block title %}Register | HR DT{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="center">
+    <h1 id="registerheader">Register for an account</h1>
+      <form action="/register" method="POST" id="registerForm">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-at"></i></span>
+            <input type="email" class="form-control form-control-md" id="email" placeholder="Email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text" class="form-control form-control-md" id="uname" placeholder="Username" name="uname" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text" class="form-control form-control-md" id="fullname" placeholder="Full Name" name="fullname" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control form-control-md" id="pwd" placeholder="Password" name="pswd" required>
+            <span toggle="#pwd" class="fa fa-fw fa-eye toggle-password" onclick="togglepwd()" id="showpswd"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control form-control-md" id="cpwd" placeholder="Confirm Password" name="cpswd" required>
+            <span toggle="#cpwd" class="fa fa-fw fa-eye ctoggle-password" onclick="ctogglepwd()" id="cshowpswd"></span>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-success btn-block btn-md"><i class="fa fa-user-plus"></i> Register</button><br/>
+      </form>
+      <span>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="alert alert-info alert-dismissible" style="text-align: center;"> 
+                        <button type="button" class="close" data-dismiss="alert">&times;</button> {{msg}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </span>
+  </div>
+</div>
+{% endblock %}

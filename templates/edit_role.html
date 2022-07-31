@@ -1,0 +1,32 @@
+{% extends "base_dashboard.html" %}
+{% block title %}Edit Department | HR DT{% endblock %}
+{% block body %}
+<div class="content-section">
+ <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div class="center">
+            <h1>Edit Department</h1>
+            <br/>
+            <form action="/admin/department/update" method="POST" id="editDepartment">
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-plus-square"></i></span>
+                    <input type="text" class="form-control form-control-md" id="name" placeholder="Department Name" name="name" value="{{ name if name }}" required>
+                  </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-plus-square"></i></span>
+                    <input type="text" class="form-control form-control-md" id="description" placeholder="Description" name="description" value="{{ description if description }}" required>
+                  </div>
+                </div>
+                  <button type="submit" class="btn btn-success btn-md"><i class="fa fa-user-plus"></i> Submit</button><br/>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

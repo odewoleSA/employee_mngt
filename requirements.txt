@@ -1,0 +1,41 @@
+Requirement:
+---------------------
+1. Users will be able to register and login as employees
+2. The administrator will be able to create, update, and delete departments and roles
+3. The administrator will be able to assign employees to a department and assign them roles
+4. The administrator will be able to view all employees and their details
+
+Models:
+-----------------------
+We’ll need three models: Employee, Department, and Role
+
+1. Employee Model
+
+id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(60), index=True, unique=True)
+    username = db.Column(db.String(60), index=True, unique=True)
+    first_name = db.Column(db.String(60), index=True)
+    last_name = db.Column(db.String(60), index=True)
+    password_hash = db.Column(db.String(128))
+    department_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    is_admin = db.Column(db.Boolean, default=False)
+
+2. Department Model
+
+id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60), unique=True)
+    description = db.Column(db.String(200))
+    employees = db.relationship('Employee', backref='department',
+                                lazy='dynamic')
+
+3. Role Model
+
+id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60), unique=True)
+    description = db.Column(db.String(200))
+    employees = db.relationship('Employee', backref='role',
+                                lazy='dynamic')
+
+
+

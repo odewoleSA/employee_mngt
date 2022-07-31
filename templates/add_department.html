@@ -1,0 +1,42 @@
+{% extends "base_dashboard.html" %}
+{% block title %}Add Department | HR DT{% endblock %}
+{% block body %}
+<div class="content-section">
+ <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <p class="alert alert-info alert-dismissible" style="text-align: center;"> 
+                            <button type="button" class="close" data-dismiss="alert">&times;</button> {{msg}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+         <br/>
+        <div class="center">
+            <h1>Add Department</h1>
+            <br/>
+            <form action="/admin/department/add_department" method="POST" id="addDepartment">
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-plus-square"></i></span>
+                    <input type="text" class="form-control form-control-md" id="name" placeholder="Department Name" name="name" required>
+                  </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-plus-square"></i></span>
+                    <input type="text" class="form-control form-control-md" id="description" placeholder="Description" name="description" required>
+                  </div>
+                </div>
+                  <button type="submit" class="btn btn-success btn-md"><i class="fa fa-user-plus"></i> Submit</button><br/>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
